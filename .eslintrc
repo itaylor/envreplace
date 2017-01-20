@@ -1,0 +1,22 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "globals": {
+    "__DEV__": true,
+    "__SERVER__": true,
+    "suite": false,
+    "test": false
+  },
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "extends": "airbnb/base",
+  "rules": {
+    "new-cap": 0,
+    "no-use-before-define": [0],
+    "max-len": 0,
+  }
+}

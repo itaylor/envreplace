@@ -1,0 +1,2 @@
+Var 1: ${env.SOMEVAR}
+Var 2: ${env.SOMEOTHERVAR}

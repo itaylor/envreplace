@@ -1,0 +1,4 @@
+This is an alternate pattern match
+&#@FOO@#&
+&#@BAR@#&
+&#@FOO@#&

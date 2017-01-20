@@ -1,0 +1,33 @@
+{
+  "name": "envreplace",
+  "version": "1.0.0",
+  "description": "CLI util to replace matched instances of environment variables in files with their values",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "npm test && npm run lint",
+    "test": "node node_modules/.bin/mocha --opts './mocha.opts' **.test.js",
+    "lint": "node node_modules/.bin/eslint *.js"
+  },
+  "author": "",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "globby": "^6.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0"
+  },
+  "bin": {
+    "envreplace": "index.js"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "keywords": ["replace", "find", "environment", "variable", "env"],
+  "author": "Ian Taylor",
+  "license": "MIT"
+}
