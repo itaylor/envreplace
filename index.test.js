@@ -67,6 +67,18 @@ I like to \${env.ACTION}.
       done();
     });
   });
+  test('single folder', (done) => {
+    exec(`VARIABLE=var node "${__dirname}/index.js" "${tempTestFixtures}/f1/f2/"`,
+    (err, stdout, stderr) => {
+      expect(err).toBe(null);
+      expect(stdout).toBe('');
+      expect(stderr).toBe('');
+      const content3Txt = fs.readFileSync(`${tempTestFixtures}/f1/f2/3.txt`, 'utf8');
+      expect(content3Txt).toBe(`Just a file with a var in it var twice on the same line.
+`);
+      done();
+    });
+  });
   test('Multiple files, no globs', (done) => {
     exec(`ACTION='build rockets' node "${__dirname}/index.js" -e "${tempTestFixtures}/1.txt" "${tempTestFixtures}/2.txt"`,
     (err, stdout, stderr) => {

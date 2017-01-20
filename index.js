@@ -19,8 +19,7 @@ program
       glob => globby(glob))).then(
       (fileLists) => {
         const fileList = flatten(fileLists);
-        const deduped = [...(new Set(fileList))];
-        replaceInFiles(deduped, program.regexEnv).then(
+        replaceInFiles(fileList, program.regexEnv).then(
           () => process.exit(0)).catch(
           (err) => {
             console.error(err);
@@ -51,8 +50,26 @@ function flatten(arr) {
   return arr.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
 }
 
+function filesFromFilesOrDirs(filesOrDirs) {
+  return flatten(filesOrDirs.map((file) => {
+    if (fs.statSync(file).isDirectory()) {
+      const results = [];
+      fs.readdirSync(file).forEach((f) => {
+        const p = `${file}/${f}`;
+        if (fs.statSync(p).isFile()) {
+          results.push(p);
+        }
+      });
+      return results;
+    }
+    return file;
+  }));
+}
+
 function replaceInFiles(files, regex = /\${env\.(.*?)}/gi) {
-  return Promise.all(files.map(file => new Promise((resolve, reject) => {
+  const allFiles = filesFromFilesOrDirs(files);
+  const dedupedFiles = [...(new Set(allFiles))];
+  return Promise.all(dedupedFiles.map(file => new Promise((resolve, reject) => {
     fs.readFile(file, 'utf8', (error, contents) => {
       if (error) {
         reject(error);
