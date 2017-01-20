@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "CLI utility to find and replace environment variable references in files with their values",
   "main": "index.js",
+  "repository": "itaylor/envreplace",
   "scripts": {
     "prepublish": "npm test && npm run lint",
     "test": "node node_modules/.bin/mocha --opts './mocha.opts' **.test.js",
