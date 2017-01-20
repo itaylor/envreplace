@@ -1,7 +1,7 @@
 {
   "name": "envreplace",
   "version": "1.0.0",
-  "description": "CLI util to replace matched instances of environment variables in files with their values",
+  "description": "CLI utility to find and replace environment variable references in files with their values",
   "main": "index.js",
   "scripts": {
     "prepublish": "npm test && npm run lint",
