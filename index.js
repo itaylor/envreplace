@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /* eslint-disable no-template-curly-in-string, no-console */
 const globby = require('globby');
 const packageJson = require('./package.json');
