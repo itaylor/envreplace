@@ -82,7 +82,7 @@ function replaceInFiles(files, regex = /\${env\.(.*?)}/gi) {
       }
       const newContent = contents.replace(regex, (match, envVarName) => {
         const val = process.env[envVarName];
-        if (val) {
+        if (val !== undefined && val !== null) { // 0, false, and '' are ok.
           if (program.verbose) {
             console.log(`Replacing '${match}' with '${val}'`);
           }
